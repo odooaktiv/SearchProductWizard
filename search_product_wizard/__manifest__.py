@@ -21,6 +21,7 @@
         'report/search_product_report_registration.xml',
         'report/search_product_template.xml',
         ],
+    'images': ['static/description/banner.jpg'],	
     'installable': True,
     'auto_install': False,
     'application': False
