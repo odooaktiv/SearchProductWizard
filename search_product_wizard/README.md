@@ -1,7 +1,7 @@
 Search Product Wizard
 ---------------------
 
-Odoo Version : Odoo 11.0 Community master
+Odoo Version : Odoo 11.0 Community 
 
 
 Installation 
