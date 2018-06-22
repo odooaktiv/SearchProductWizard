@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Report Regitration of Search Product -->
+    <report
+            id="action_search_product_report"
+            model="search.product"
+            string="Search Product Report"
+            report_type="qweb-pdf"
+            file="search_product_wizard.search_product_template"
+            name="search_product_wizard.search_product_template"
+            menu="False"/>
+</odoo>
