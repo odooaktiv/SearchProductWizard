@@ -55,7 +55,6 @@
     </record>
 
     <!--Menu of Search Product-->
-
-    <menuitem id="menu_search_product" name="Search Product" action="action_search_product" parent="stock.menu_warehouse_report" sequence="151"/>
+    <menuitem id="menu_search_product" name="Search Product" action="action_search_product" parent="stock.menu_warehouse_report" sequence="131"/>
 
 </odoo>

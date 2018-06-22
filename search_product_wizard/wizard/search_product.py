@@ -38,7 +38,7 @@ class SearchProduct(models.TransientModel):
         """
         This method is used to fetch the products attributes as per the 
         configuration.
-        ----------------------------------------------------------------
+        --------------------------------------------------------------------
         @self : object pointer
         """
         res = super(SearchProduct, self).default_get(fields)
@@ -48,13 +48,13 @@ class SearchProduct(models.TransientModel):
             if recs.key == 'search_product_wizard.field1' and recs.value:
                 res['field1'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field1', False))
             if recs.key == 'search_product_wizard.field2' and recs.value:
-                res['field2'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field2', False))
+                res['field2'] = int(self.env['ir.config_parameter'].get_param('search_product_wizard.field2', False))
             if recs.key == 'search_product_wizard.field3' and recs.value:
-                res['field3'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field3', False))
+                res['field3'] = int(self.env['ir.config_parameter'].get_param('search_product_wizard.field3', False))
             if recs.key == 'search_product_wizard.field4' and recs.value:
-                res['field4'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field4', False))
+                res['field4'] = int(self.env['ir.config_parameter'].get_param('search_product_wizard.field4', False))
             if recs.key == 'search_product_wizard.field5' and recs.value:
-                res['field5'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field5', False))
+                res['field5'] = int(self.env['ir.config_parameter'].get_param('search_product_wizard.field5', False))
         return res
 
     @api.onchange('field2', 'field3', 'field4', 'field5')
@@ -280,8 +280,7 @@ class SearchProduct(models.TransientModel):
         ----------------------------------------------------------------
         @self : object pointer
         """
-        # return self.env['report'].get_action(self, 'search_product_wizard.search_product_template')
-        return self.env.ref('search_product_wizard.action_search_product_report').report_action(self)
+        return self.env['report'].get_action(self, 'search_product_wizard.search_product_template')
 
 
 class ShowProductLines(models.TransientModel):

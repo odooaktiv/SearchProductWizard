@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import search_product
+import search_product

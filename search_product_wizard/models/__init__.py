@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
-from . import res_config_settings
-from . import product_attribute
+import stock_config_settings
+import product_attribute
