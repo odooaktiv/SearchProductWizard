@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models, _
+from openerp import api, fields, models, _
 
 
 class ProductAttributeValue(models.Model):

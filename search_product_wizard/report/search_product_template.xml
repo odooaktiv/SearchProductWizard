@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- Search Report Template -->
-    <template id="search_product_template">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="report.external_layout">
-                    <div class="page">
-                        <table class = "table table-condensed">
-                            <thead t-if="o.fieldv1 or o.fieldv2 or o.fieldv3 or o.fieldv4 or o.fieldv5">
-                                <th><h4><strong>Attribute  Name</strong></h4></th>
-                                <th><h4><strong>Attribute Value</strong></h4></th>
-                            </thead> 
-                            <tr style="font-size:15px" t-if="o.field2 and o.fieldv1">
-                                <td>
-                                    <span t-field="o.field1"/>
-                                </td>
-                                <td>
-                                    <span t-field="o.fieldv1.name"/>
-                                </td>
-                            </tr>
-                            <tr style="font-size:15px" t-if="o.field2 and o.fieldv2">
-                                <td>
-                                    <span t-field="o.field2"/>
-                                </td>
-                                <td>
-                                    <span t-field="o.fieldv2.name"/>
-                                </td>
-                            </tr>
-                            <tr style="font-size:15px" t-if="o.field3 and o.fieldv3">
-                                <td>
-                                    <span t-field="o.field3"/>
-                                </td>
-                                <td>
-                                    <span t-field="o.fieldv3.name"/>
-                                </td>
-                            </tr>
-                            <tr style="font-size:15px" t-if="o.field4 and o.fieldv4">
-                                <td>
-                                    <span t-field="o.field4"/>
-                                </td>
-                                <td>
-                                    <span t-field="o.fieldv4.name"/>
-                                </td>
-                            </tr>
-                            <tr style="font-size:15px" t-if="o.field5 and o.fieldv5">
-                                <td>
-                                    <span t-field="o.field5"/>
-                                </td>
-                                <td>
-                                    <span t-field="o.fieldv5.name"/>
-                                </td>
-                            </tr>
-                        </table>
-                        <br/>
-                        <table class="table table-condensed">
-                            <thead>
-                                <th><h4><strong>Product</strong></h4></th>
-                                <th><h4><strong>Internal Reference Code</strong></h4></th>
-                            </thead>
-                            <tr style="font-size:15px" t-foreach="o.get_products_in_report()" t-as="products">
-                                <td>
-                                    <span t-esc="products.product_id.name_get()[0][1]"/>
-                                </td>
-                                <td>
-                                    <span t-esc="products.default_code"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+<openerp>
+    <data>
+        <!-- Search Report Template -->
+        <template id="search_product_template">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <table class = "table table-condensed">
+                                <thead t-if="o.fieldv1 or o.fieldv2 or o.fieldv3 or o.fieldv4 or o.fieldv5">
+                                    <th><h4><strong>Attribute  Name</strong></h4></th>
+                                    <th><h4><strong>Attribute Value</strong></h4></th>
+                                </thead> 
+                                <tr style="font-size:15px" t-if="o.field2 and o.fieldv1">
+                                    <td>
+                                        <span t-field="o.field1"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.fieldv1.name"/>
+                                    </td>
+                                </tr>
+                                <tr style="font-size:15px" t-if="o.field2 and o.fieldv2">
+                                    <td>
+                                        <span t-field="o.field2"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.fieldv2.name"/>
+                                    </td>
+                                </tr>
+                                <tr style="font-size:15px" t-if="o.field3 and o.fieldv3">
+                                    <td>
+                                        <span t-field="o.field3"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.fieldv3.name"/>
+                                    </td>
+                                </tr>
+                                <tr style="font-size:15px" t-if="o.field4 and o.fieldv4">
+                                    <td>
+                                        <span t-field="o.field4"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.fieldv4.name"/>
+                                    </td>
+                                </tr>
+                                <tr style="font-size:15px" t-if="o.field5 and o.fieldv5">
+                                    <td>
+                                        <span t-field="o.field5"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.fieldv5.name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <th><h4><strong>Product</strong></h4></th>
+                                    <th><h4><strong>Internal Reference Code</strong></h4></th>
+                                </thead>
+                                <tr style="font-size:15px" t-foreach="o.get_products_in_report()" t-as="products">
+                                    <td>
+                                        <span t-esc="products.product_id.name_get()[0][1]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="products.default_code"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
                 </t>
             </t>
-        </t>
-    </template>
-</odoo>
+        </template>
+    </data>
+</openerp>

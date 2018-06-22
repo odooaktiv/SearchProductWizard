@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- Form view of Search Product Wizard -->
-    <record id="form_view_search_product" model="ir.ui.view">
-        <field name="name">form.view.search.product</field>
-        <field name="model">search.product</field>
-        <field name="arch" type="xml">
-            <form string="Create Inventory Adjustment">
-                <group>
-                    <field name="field1" options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1" />
-                    <field name="fieldv1"  domain="[('attribute_id','=',field1)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field1','=',False)]}" context="{'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
-                    <field name="field2" options="{'no_create': True, 'no_open': True}"  readonly="True" style="width:50%" nolabel="1"/>
-                    <field name="fieldv2" domain="[('attribute_id','=',field2)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field2','=',False)]}" context="{'fieldv1':fieldv1,'fieldv3':fieldv3,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
-                    <field name="field3" options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1"/>
-                    <field name="fieldv3" domain="[('attribute_id','=',field3)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field3','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
-                    <field name="field4" options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1"/>
-                    <field name="fieldv4" domain="[('attribute_id','=',field4)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field4','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv5':fieldv5,'state':state}" />
-                    <field name="field5" options="{'no_create': True, 'no_open': True}" readonly="True" style="width:50%" nolabel="1"/>
-                    <field name="fieldv5" domain="[('attribute_id','=',field5)]" options="{'no_create': True, 'no_open': True}" style="width:50%; margin-left:-80%" nolabel="1" attrs="{'invisible':[('field5','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv4':fieldv4,'state':state}"/>
-                    <field name="state" invisible="1"/>
-                </group>
-                <field name="show_product_lines_ids" string="Product Variants">
-                    <tree create="false" edit="false" delete="false">
-                        <field name="product_id" readonly="1"/>
-                        <field name="default_code"/>
-                    </tree>
-                    <form>
-                        <field name="product_id"/>
-                        <field name="default_code"/>
-                    </form>
-                </field>
-                <footer>
-                    <button name="print_product_report" string="Print Report" type="object" class="btn-primary"/>
-                    <button class="oe_stat_button" type="object" name="get_product_list" icon="fa-product-hunt" attrs="{'invisible':[('field1','=',False), ('field2','=',False), ('field3','=',False), ('field4','=',False), ('field5','=',False)]}">
-                        <div class="o_stat_info">
-                            <field name="count_product" class="o_stat_value"/>
-                            <span class="o_stat_text">&#160;Products</span>
-                        </div>
-                    </button>
-                    <button special="cancel" string="Cancel" type="object" class="btn-default"/>
-                </footer>
-            </form>
-        </field>
-    </record>
-    
-    <!--Action of Search Product Wizard -->
-    <record id="action_search_product" model="ir.actions.act_window">
-        <field name="name">Search Product</field>
-        <field name="res_model">search.product</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="form_view_search_product"/>
-        <field name="target">new</field>
-    </record>
+<openerp>
+    <data>
+        <!-- Form view of Search Product Wizard -->
+        <record id="form_view_search_product" model="ir.ui.view">
+            <field name="name">form.view.search.product</field>
+            <field name="model">search.product</field>
+            <field name="arch" type="xml">
+                <form string="Create Inventory Adjustment">
+                    <group>
+                        <field name="field1"  options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1" />
+                        <field name="fieldv1"  domain="[('attribute_id','=',field1)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field1','=',False)]}" context="{'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
+                        <field name="field2" options="{'no_create': True, 'no_open': True}"  readonly="True" style="width:50%" nolabel="1"/>
+                        <field name="fieldv2" domain="[('attribute_id','=',field2)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field2','=',False)]}" context="{'fieldv1':fieldv1,'fieldv3':fieldv3,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
+                        <field name="field3" options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1"/>
+                        <field name="fieldv3" domain="[('attribute_id','=',field3)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field3','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv4':fieldv4,'fieldv5':fieldv5,'state':state}" />
+                        <field name="field4" options="{'no_create': True, 'no_open': True}" style="width:50%" readonly="True" nolabel="1"/>
+                        <field name="fieldv4" domain="[('attribute_id','=',field4)]" style="width:50%; margin-left:-80%" options="{'no_create': True, 'no_open': True}" nolabel="1" attrs="{'invisible':[('field4','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv5':fieldv5,'state':state}" />
+                        <field name="field5" options="{'no_create': True, 'no_open': True}" readonly="True" style="width:50%" nolabel="1"/>
+                        <field name="fieldv5" domain="[('attribute_id','=',field5)]" options="{'no_create': True, 'no_open': True}" style="width:50%; margin-left:-80%" nolabel="1" attrs="{'invisible':[('field5','=',False)]}" context="{'fieldv1':fieldv1,'fieldv2':fieldv2,'fieldv3':fieldv3,'fieldv4':fieldv4,'state':state}"/>
+                        <field name="state" invisible="1"/>
+                    </group>
+                    <field name="show_product_lines_ids" string="Product Variants">
+                        <tree create="false" edit="false" delete="false">
+                            <field name="product_id" readonly="1"/>
+                            <field name="default_code"/>
+                        </tree>
+                        <form>
+                            <field name="product_id"/>
+                            <field name="default_code"/>
+                        </form>
+                    </field>
+                    <footer>
+                        <button name="print_product_report" string="Print Report" type="object" class="btn-primary"/>
+                        <button class="oe_stat_button" type="object" name="get_product_list" icon="fa-product-hunt" attrs="{'invisible':[('field1','=',False), ('field2','=',False), ('field3','=',False), ('field4','=',False), ('field5','=',False)]}">
+                            <div class="o_stat_info">
+                                <field name="count_product" class="o_stat_value"/>
+                                <span class="o_stat_text">&#160;Products</span>
+                            </div>
+                        </button>
+                        <button special="cancel" string="Cancel" type="object" class="btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <!--Action of Search Product Wizard -->
+        <record id="action_search_product" model="ir.actions.act_window">
+            <field name="name">Search Product</field>
+            <field name="res_model">search.product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_view_search_product"/>
+            <field name="target">new</field>
+        </record>
 
-    <!--Menu of Search Product-->
-    <menuitem id="menu_search_product" name="Search Product" action="action_search_product" parent="stock.menu_warehouse_report" sequence="131"/>
-
-</odoo>
+        <!--Menu of Search Product-->
+        <menuitem id="menu_search_product" name="Search Product" action="action_search_product" parent="stock.menu_warehouse_report" sequence="131"/>
+    </data>
+</openerp>
