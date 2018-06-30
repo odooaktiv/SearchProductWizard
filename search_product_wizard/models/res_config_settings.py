@@ -12,7 +12,6 @@ class ResConfigSettings(models.TransientModel):
     field4 = fields.Many2one('product.attribute', string='Attribute 4')
     field5 = fields.Many2one('product.attribute', string='Attribute 5')
 
-
     @api.model
     def get_values(self):
         """
@@ -22,16 +21,21 @@ class ResConfigSettings(models.TransientModel):
         """
         res = super(ResConfigSettings, self).get_values()
         ir_config_parameter_obj = self.env['ir.config_parameter']
-        field1 = ir_config_parameter_obj.get_param('search_product_wizard.field1', False)
-        field2 = ir_config_parameter_obj.get_param('search_product_wizard.field2', False)
-        field3 = ir_config_parameter_obj.get_param('search_product_wizard.field3', False)
-        field4 = ir_config_parameter_obj.get_param('search_product_wizard.field4', False)
-        field5 = ir_config_parameter_obj.get_param('search_product_wizard.field5', False)
+        field1 = ir_config_parameter_obj.get_param(
+            'search_product_wizard.field1', False)
+        field2 = ir_config_parameter_obj.get_param(
+            'search_product_wizard.field2', False)
+        field3 = ir_config_parameter_obj.get_param(
+            'search_product_wizard.field3', False)
+        field4 = ir_config_parameter_obj.get_param(
+            'search_product_wizard.field4', False)
+        field5 = ir_config_parameter_obj.get_param(
+            'search_product_wizard.field5', False)
         res.update(field1=field1 and int(field1) or False,
-         field2=field2 and int(field2) or False, 
-         field3=field3 and int(field3) or False, 
-         field4=field4 and int(field4) or False, 
-         field5=field5 and int(field5) or False)
+                   field2=field2 and int(field2) or False,
+                   field3=field3 and int(field3) or False,
+                   field4=field4 and int(field4) or False,
+                   field5=field5 and int(field5) or False)
         return res
 
     @api.multi
@@ -43,11 +47,16 @@ class ResConfigSettings(models.TransientModel):
         """
         super(ResConfigSettings, self).set_values()
         IrConfigParams = self.env['ir.config_parameter']
-        IrConfigParams.set_param('search_product_wizard.field1', self.field1.id)
-        IrConfigParams.set_param('search_product_wizard.field2', self.field2.id)
-        IrConfigParams.set_param('search_product_wizard.field3', self.field3.id)
-        IrConfigParams.set_param('search_product_wizard.field4', self.field4.id)
-        IrConfigParams.set_param('search_product_wizard.field5', self.field5.id)
+        IrConfigParams.set_param(
+            'search_product_wizard.field1', self.field1.id)
+        IrConfigParams.set_param(
+            'search_product_wizard.field2', self.field2.id)
+        IrConfigParams.set_param(
+            'search_product_wizard.field3', self.field3.id)
+        IrConfigParams.set_param(
+            'search_product_wizard.field4', self.field4.id)
+        IrConfigParams.set_param(
+            'search_product_wizard.field5', self.field5.id)
 
     @api.onchange('field1', 'field3', 'field4', 'field5')
     def onchange_field2(self):
