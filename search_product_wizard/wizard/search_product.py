@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import datetime
 from odoo import api, fields, models
+from dateutil.relativedelta import relativedelta
 
 
 class SearchProduct(models.TransientModel):
-    """Search Product Wizard Object for fetching all
+    """ Search Product Wizard Object for fetching all 
     the products as per the Product Attributes """
     _name = 'search.product'
 
@@ -24,8 +25,7 @@ class SearchProduct(models.TransientModel):
     product_id = fields.Many2one(
         'product.product', string='Product')
     product_qty = fields.Float(string='Quantity', default=1)
-    production_date = fields.Datetime(
-        string='Production Date', default=datetime.datetime.now())
+    production_date = fields.Datetime(string='Production Date', default=datetime.datetime.now())
     count_product = fields.Integer(
         string="Filtered Product  Count", compute='_compute_count_product')
     show_product_lines_ids = fields.One2many(
@@ -35,8 +35,9 @@ class SearchProduct(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        """This method is used to fetch the products attributes as per the
-                configuration.
+        """
+        This method is used to fetch the products attributes as per the 
+        configuration.
         ----------------------------------------------------------------
         @self : object pointer
         """
@@ -45,20 +46,15 @@ class SearchProduct(models.TransientModel):
         ir_config_parameter_recs = ir_config_parameter_obj.search([])
         for recs in ir_config_parameter_recs:
             if recs.key == 'search_product_wizard.field1' and recs.value:
-                res['field1'] = int(ir_config_parameter_obj.get_param(
-                    'search_product_wizard.field1', False))
+                res['field1'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field1', False))
             if recs.key == 'search_product_wizard.field2' and recs.value:
-                res['field2'] = int(ir_config_parameter_obj.get_param(
-                    'search_product_wizard.field2', False))
+                res['field2'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field2', False))
             if recs.key == 'search_product_wizard.field3' and recs.value:
-                res['field3'] = int(ir_config_parameter_obj.get_param(
-                    'search_product_wizard.field3', False))
+                res['field3'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field3', False))
             if recs.key == 'search_product_wizard.field4' and recs.value:
-                res['field4'] = int(ir_config_parameter_obj.get_param(
-                    'search_product_wizard.field4', False))
+                res['field4'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field4', False))
             if recs.key == 'search_product_wizard.field5' and recs.value:
-                res['field5'] = int(ir_config_parameter_obj.get_param(
-                    'search_product_wizard.field5', False))
+                res['field5'] = int(ir_config_parameter_obj.get_param('search_product_wizard.field5', False))
         return res
 
     @api.onchange('field2', 'field3', 'field4', 'field5')
@@ -203,6 +199,7 @@ class SearchProduct(models.TransientModel):
         else:
             self.product_id = False
 
+
     @api.multi
     def get_product_list(self):
         """
@@ -227,12 +224,10 @@ class SearchProduct(models.TransientModel):
         get_products_ids = self.env['product.product'].search(domain)
         for product_line in get_products_ids:
             result.append(line_obj.create({'product_id': product_line.id,
-                                           'location_id':
-                                           product_line.location_id.id,
-                                           'reg_product_id': self.id,
-                                           'default_code':
-                                           product_line.default_code
-                                           }).id)
+                                   'location_id': product_line.location_id.id,
+                                   'reg_product_id': self.id,
+                                   'default_code': product_line.default_code
+                                   }).id)
         self.show_product_lines_ids = [(6, 0, result)]
         if self.count_product == 1:
             self.product_id = self.env['product.product'].search(domain).id
@@ -244,11 +239,11 @@ class SearchProduct(models.TransientModel):
             'type': 'ir.actions.act_window',
             'res_id': self.id,
             'target': 'new',
-        }
+            }
 
     def get_products_in_report(self):
-        """This method is called from Search Product Wizard
-        to get all the
+        """
+        This method is called from Search Product Wizard to get all the 
         products in report.
         ----------------------------------------------------------------
         @self : object pointer
@@ -269,12 +264,10 @@ class SearchProduct(models.TransientModel):
         get_products_ids = self.env['product.product'].search(domain)
         for product_line in get_products_ids:
             result.append(line_obj.create({'product_id': product_line.id,
-                                           'location_id':
-                                           product_line.location_id.id,
-                                           'reg_product_id': self.id,
-                                           'default_code':
-                                           product_line.default_code
-                                           }).id)
+                                   'location_id': product_line.location_id.id,
+                                   'reg_product_id': self.id,
+                                   'default_code': product_line.default_code
+                                   }).id)
         self.show_product_lines_ids = [(6, 0, result)]
 
         return self.show_product_lines_ids
@@ -287,17 +280,13 @@ class SearchProduct(models.TransientModel):
         ----------------------------------------------------------------
         @self : object pointer
         """
-        # return self.env['report'].get_action(self, 'search
-        # _product_wizard.search_product_template')
-        return self.env.ref
-        ('search_product_wizard.action_search_product_report')\
-            .report_action(self)
+        # return self.env['report'].get_action(self, 'search_product_wizard.search_product_template')
+        return self.env.ref('search_product_wizard.action_search_product_report').report_action(self)
 
 
 class ShowProductLines(models.TransientModel):
     _name = 'show.product.lines'
 
-    search_product_id = fields.Many2one(
-        'search.product', string='Searched Product')
+    search_product_id = fields.Many2one('search.product', string='Searched Product')
     product_id = fields.Many2one('product.product', 'Product')
     default_code = fields.Char('Internal Reference')
