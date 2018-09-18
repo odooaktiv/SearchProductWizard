@@ -16,7 +16,7 @@ class StockSettings(models.TransientModel):
     @api.model
     def get_default_field1(self, fields):
         """
-        This method gets the value of attribute 1 as field 1 from config
+        This method gets the value of attribute 1 as field 1 from config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -28,7 +28,7 @@ class StockSettings(models.TransientModel):
     @api.model
     def get_default_field2(self, fields):
         """
-        This method gets the value of attribute 2 as field 2 from config
+        This method gets the value of attribute 2 as field 2 from config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -40,7 +40,7 @@ class StockSettings(models.TransientModel):
     @api.model
     def get_default_field3(self, fields):
         """
-        This method gets the value of attribute 3 as field 3 from config
+        This method gets the value of attribute 3 as field 3 from config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -52,7 +52,7 @@ class StockSettings(models.TransientModel):
     @api.model
     def get_default_field4(self, fields):
         """
-        This method gets the value of attribute 4 as field 4 from config
+        This method gets the value of attribute 4 as field 4 from config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -64,7 +64,7 @@ class StockSettings(models.TransientModel):
     @api.model
     def get_default_field5(self, fields):
         """
-        This method gets the value of attribute 5 as field 5 from config
+        This method gets the value of attribute 5 as field 5 from config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -76,7 +76,7 @@ class StockSettings(models.TransientModel):
     @api.multi
     def set_field1(self):
         """
-        This method sets the value of attribute 1 as field 1 in config
+        This method sets the value of attribute 1 as field 1 in config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -89,7 +89,7 @@ class StockSettings(models.TransientModel):
     @api.multi
     def set_field2(self):
         """
-        This method sets the value of attribute 2 as field 2 in config
+        This method sets the value of attribute 2 as field 2 in config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -102,7 +102,7 @@ class StockSettings(models.TransientModel):
     @api.multi
     def set_field3(self):
         """
-        This method sets the value of attribute 3 as field 3 in config
+        This method sets the value of attribute 3 as field 3 in config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -115,7 +115,7 @@ class StockSettings(models.TransientModel):
     @api.multi
     def set_field4(self):
         """
-        This method sets the value of attribute 4 as field 4 in config
+        This method sets the value of attribute 4 as field 4 in config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer
@@ -128,7 +128,7 @@ class StockSettings(models.TransientModel):
     @api.multi
     def set_field5(self):
         """
-        This method sets the value of attribute 5 as field 5 in config
+        This method sets the value of attribute 5 as field 5 in config 
         parameters.
         ----------------------------------------------------------------
         @self : object pointer

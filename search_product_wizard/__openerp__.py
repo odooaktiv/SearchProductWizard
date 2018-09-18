@@ -4,7 +4,8 @@
     'author': 'Aktiv Software',
     'category': 'Stock',
     'website': 'www.aktivsoftware.com',
-    'version': '1.0',
+    'version': '9.0.1.0.0',
+    'license': 'AGPL-3',
     'summary': '''
                 This module helps in finding a matching product as per its
                 attribute.
