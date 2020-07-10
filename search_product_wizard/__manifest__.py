@@ -2,7 +2,7 @@
 {
     'name': 'Search Product Wizard',
     'author': 'Aktiv Software',
-    'category': 'Stock',
+    'category': 'Warehouse',
     'website': 'www.aktivsoftware.com',
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
